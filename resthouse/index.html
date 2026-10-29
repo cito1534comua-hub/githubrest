@@ -1,0 +1,464 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RESTHOUSE CAFE — Лубни (редизайн-концепт)</title>
+<meta name="description" content="Піца, суші, страви, напої та коктейлі. Меню RESTHOUSE CAFE у Лубнах.">
+<style>
+:root{
+  --bg:#14110f;--bg2:#1d1916;--card:#231e1a;--line:#352d27;
+  --text:#f3ece4;--muted:#a79b8f;--accent:#f2a33a;--accent2:#e4572e;--ok:#5ec27a;
+  --r:16px;
+}
+@media (prefers-color-scheme:light){
+  :root{--bg:#faf6f0;--bg2:#fff;--card:#fff;--line:#e8dfd3;--text:#241d17;--muted:#7a6d60;--accent:#d97d0b;--accent2:#c9441b;--ok:#2f9b52}
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:130px}
+body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.45;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
+.wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+
+/* header */
+header.top{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.top .row{display:flex;align-items:center;gap:12px;height:60px}
+.logo{font-weight:800;letter-spacing:.5px;font-size:1.15rem}
+.logo b{color:var(--accent)}
+.status{font-size:.8rem;color:var(--muted);display:flex;align-items:center;gap:6px;margin-left:auto}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--muted)}
+.dot.open{background:var(--ok);box-shadow:0 0 0 4px color-mix(in srgb,var(--ok) 25%,transparent)}
+.call{background:var(--accent);color:#1a1209;font-weight:700;padding:9px 14px;border-radius:999px;font-size:.9rem;white-space:nowrap}
+.cartbtn{position:relative;padding:9px 14px;border-radius:999px;border:1px solid var(--line);background:var(--card);font-size:.9rem}
+.cartbtn i{font-style:normal;background:var(--accent2);color:#fff;border-radius:999px;padding:1px 7px;font-size:.75rem;margin-left:6px}
+@media(max-width:560px){.status span{display:none}.logo{font-size:1rem}}
+
+/* hero */
+.hero{padding:44px 0 28px;background:
+  radial-gradient(900px 300px at 80% -10%,color-mix(in srgb,var(--accent) 22%,transparent),transparent),
+  radial-gradient(600px 260px at 0% 0%,color-mix(in srgb,var(--accent2) 14%,transparent),transparent)}
+.hero h1{font-size:clamp(2rem,6vw,3.4rem);line-height:1.05;letter-spacing:-.02em;max-width:14ch}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero p{color:var(--muted);margin:14px 0 22px;max-width:46ch}
+.facts{display:flex;flex-wrap:wrap;gap:10px}
+.fact{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:8px 14px;font-size:.85rem}
+
+/* tools */
+.tools{position:sticky;top:60px;z-index:20;background:var(--bg);border-bottom:1px solid var(--line);padding:10px 0}
+.search{width:100%;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:11px 14px;color:var(--text);font:inherit;outline:none}
+.search:focus{border-color:var(--accent)}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:10px 0 2px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;padding:8px 14px;border-radius:999px;border:1px solid var(--line);background:var(--card);font-size:.88rem;white-space:nowrap}
+.chip.on{background:var(--accent);color:#1a1209;border-color:var(--accent);font-weight:700}
+.opts{display:flex;gap:14px;align-items:center;margin-top:8px;font-size:.85rem;color:var(--muted);flex-wrap:wrap}
+.opts label{display:flex;gap:6px;align-items:center;cursor:pointer}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden}
+.seg button{padding:5px 12px;font-size:.82rem}
+.seg button.on{background:var(--accent);color:#1a1209;font-weight:700}
+
+/* menu */
+section.cat{padding:26px 0 6px}
+section.cat h2{font-size:1.5rem;margin-bottom:14px;display:flex;align-items:baseline;gap:10px}
+section.cat h2 small{color:var(--muted);font-weight:400;font-size:.85rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
+.item{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:14px;display:flex;flex-direction:column;gap:6px;transition:transform .15s,border-color .15s}
+.item:hover{transform:translateY(-2px);border-color:color-mix(in srgb,var(--accent) 50%,var(--line))}
+.item h3{font-size:1rem;display:flex;gap:8px;align-items:flex-start;justify-content:space-between}
+.badge{font-size:.68rem;background:color-mix(in srgb,var(--accent2) 18%,transparent);color:var(--accent2);padding:2px 8px;border-radius:999px;font-weight:700;white-space:nowrap}
+.desc{color:var(--muted);font-size:.84rem;flex:1}
+.meta{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:4px}
+.price{font-weight:800;font-size:1.1rem}
+.price small{font-weight:400;color:var(--muted);font-size:.75rem;margin-left:4px}
+.add{background:var(--bg2);border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-weight:700;font-size:.85rem}
+.add:hover{background:var(--accent);color:#1a1209;border-color:var(--accent)}
+.empty{text-align:center;color:var(--muted);padding:50px 0}
+
+/* cart */
+.drawer{position:fixed;inset:0;z-index:50;display:none}
+.drawer.open{display:block}
+.shade{position:absolute;inset:0;background:rgba(0,0,0,.55)}
+.panel{position:absolute;right:0;top:0;bottom:0;width:min(420px,100%);background:var(--bg2);border-left:1px solid var(--line);display:flex;flex-direction:column}
+.panel header{padding:16px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);font-weight:800}
+.lines{flex:1;overflow:auto;padding:8px 16px}
+.line{display:flex;gap:10px;align-items:center;padding:10px 0;border-bottom:1px dashed var(--line);font-size:.92rem}
+.line .n{flex:1}
+.qty{display:flex;align-items:center;gap:8px}
+.qty button{width:26px;height:26px;border-radius:50%;border:1px solid var(--line);background:var(--card)}
+.panel footer{padding:16px;border-top:1px solid var(--line);display:grid;gap:10px}
+.total{display:flex;justify-content:space-between;font-weight:800;font-size:1.15rem}
+.btn{display:block;text-align:center;padding:12px;border-radius:12px;font-weight:700}
+.btn.p{background:var(--accent);color:#1a1209}
+.btn.s{border:1px solid var(--line);background:var(--card)}
+.note{font-size:.76rem;color:var(--muted)}
+
+footer.site{margin-top:40px;border-top:1px solid var(--line);padding:30px 0 60px;color:var(--muted);font-size:.9rem}
+footer.site .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+footer.site h4{color:var(--text);margin-bottom:6px}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(80px);background:var(--text);color:var(--bg);padding:10px 18px;border-radius:999px;font-weight:700;font-size:.88rem;transition:.25s;z-index:60}
+.toast.show{transform:translateX(-50%) translateY(0)}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap row">
+    <a class="logo" href="#">REST<b>HOUSE</b> CAFE</a>
+    <div class="status"><span class="dot" id="dot"></span><span id="stext">11:00 – 23:00</span></div>
+    <button class="cartbtn" id="openCart" aria-label="Кошик">Кошик<i id="cnt">0</i></button>
+    <a class="call" href="tel:+380951011790">Подзвонити</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <h1>Піца, суші та <em>добрий настрій</em> у Лубнах</h1>
+    <p>Свіже меню з піцою, роллами, стравами на кожен день, пивом і авторськими коктейлями. Замовляйте в закладі, з собою або по телефону.</p>
+    <div class="facts">
+      <span class="fact">🕚 щодня 11:00 – 23:00</span>
+      <span class="fact">📞 +380 95 101 17 90</span>
+      <span class="fact">📶 Wi-Fi: RS_Guests</span>
+      <span class="fact">🍕 Піца M та XL</span>
+    </div>
+  </div>
+</section>
+
+<div class="tools">
+  <div class="wrap">
+    <input class="search" id="q" type="search" placeholder="Пошук: лосось, сир, пепероні, мохіто…">
+    <div class="chips" id="chips"></div>
+    <div class="opts">
+      <label><input type="checkbox" id="popOnly"> Лише популярне</label>
+      <span>Розмір піци:
+        <span class="seg"><button class="on" data-s="M">Стандарт</button><button data-s="XL">XL</button></span>
+      </span>
+    </div>
+  </div>
+</div>
+
+<main class="wrap" id="menu"></main>
+
+<footer class="site">
+  <div class="wrap cols">
+    <div><h4>Контакти</h4>м. Лубни<br><a href="tel:+380951011790">+380 95 101 17 90</a></div>
+    <div><h4>Години роботи</h4>Щодня 11:00 – 23:00</div>
+    <div><h4>Гостям</h4>Wi-Fi: RS_Guests<br>Пароль: Вільний</div>
+    <div><h4>Про цей файл</h4>Концепт редизайну меню. Ціни та склад взяті з поточного сайту — перед публікацією звірте з актуальними.</div>
+  </div>
+</footer>
+
+<div class="drawer" id="drawer">
+  <div class="shade" id="shade"></div>
+  <aside class="panel">
+    <header><span>Ваше замовлення</span><button id="closeCart" aria-label="Закрити">✕</button></header>
+    <div class="lines" id="lines"></div>
+    <footer>
+      <div class="total"><span>Разом</span><span id="sum">0 грн</span></div>
+      <button class="btn s" id="copy">Скопіювати замовлення</button>
+      <a class="btn p" href="tel:+380951011790">Зателефонувати та замовити</a>
+      <p class="note">Кошик — зручний список для дзвінка. Онлайн-оплати немає.</p>
+    </footer>
+  </aside>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+/* формат: [назва, опис, ціна, ціна XL (для піци), популярне] */
+const P=true;
+const MENU=[
+{id:"pizza",name:"Піца",icon:"🍕",items:[
+["Маргарита","Червоний соус, моцарела, помідор, орегано",166,256],
+["Салямі","Червоний соус, моцарела, італійська салямі, помідор",229,363],
+["Діавола","Моцарела, пепероні, болгарський і чилі перець, пластівці чилі",293,421],
+["Гаваї","Вершковий соус, моцарела, куряче філе, кукурудза, ананас",242,422],
+["Чотири сири","Моцарела, брі, пармезан, дор блю, груша",318,497],
+["RESTHOUSE","Моцарела, салямі, бекон, броколі, дор блю",289,499],
+["Пепероні","Червоний соус, моцарела, пепероні, перець, помідор",255,392],
+["Лос Анджелес","Червоний соус, моцарела, гриби, шинка",221,382],
+["Нью-Йорк","Моцарела, мисливські ковбаски, шинка, курка, гриби, маринована цибуля",268,488],
+["Філадельфія","Філадельфія, лосось с/с, маслини, лимон, кунжут",278,499],
+["Маямі","Креветки, болгарський перець, мідії, маслини, лимон",306,489],
+["Карибі","Креветки, міні-восьминіг, мідії, кальмар, кунжут",253,372],
+["Монтана","Вершковий соус, моцарела, фета, зелена цибуля, кріп, мариновані огірки",245,382],
+["Карбонара","Вершковий соус, моцарела, бекон, часник, пармезан, жовток",212,367],
+["Хірен Веган","Червоний соус, перець, чилі, маслини, гриби, пармезан",198,321],
+["Грецька","Моцарела, гриби, помідор, телятина, маслини, фета, перець",249,421],
+["Ганібал","Салямі, шинка, шинка екстра, мисливські ковбаски, маслини",249,393,P],
+["Гаваї Делюкс","Копчена курка, ананас, кукурудза, перець, солодкий чилі",278,472,P],
+["Цезар","Моцарела, бекон, курка, айсберг, перепелине яйце, соус цезар, пармезан",327,493,P],
+["Жульєн","",223,378],
+["Мисливська","",289,492],
+["Сирний бортик","Додатково до будь-якої піци",70,110],
+["Ковбасний бортик","Додатково до будь-якої піци",80,110],
+["Пакування для піци","Щоб довезти тепло",15]
+]},
+{id:"sushi",name:"Суші та роли",icon:"🍣",items:[
+["Філадельфія Делюкс","Філадельфія, огірок, лосось, авокадо, тобіко · 305 г",348,0,P],
+["Золотий дракон","Креветка, авокадо, вугор, омлет, унагі соус",398],
+["Зелений дракон","Вугор, огірок, авокадо, омлет, унагі",278],
+["Червоний дракон","Лосось, ікра, японський майонез, огірок",318],
+["Каліфорнія з лососем","Філадельфія, авокадо, лосось, тобіко",330],
+["Каліфорнія сніговий краб","Філадельфія, авокадо, краб, тобіко",285],
+["Аляска лосось","Філадельфія, огірок, лосось, кунжут",255],
+["Аляска з вугрем","Філадельфія, вугор, огірок, унагі",252],
+["Аляска креветка","Філадельфія, огірок, креветка, кунжут",247],
+["Ебі рол","Креветка, огірок, листя салату, спайсі",295],
+["Сакура рол","Лосось, вугор, креветка, тунець, ікра",299],
+["Самурай рол","Смажений лосось, помідор, тобіко",321],
+["Чіз рол","Філадельфія, огірок, чеддер",211],
+["Торі чіз","Копчена курка, огірок, чеддер, спайсі",262],
+["Філадельфія з вугрем","Огірок, авокадо, вугор, унагі",390],
+["Філадельфія з креветкою","Огірок, креветка, спайсі",322],
+["Філадельфія лосось","Огірок, лосось слабосолений",242],
+["Філадельфія Комбо","Авокадо, тобіко, вугор, лосось",410],
+["Біг Лосось","Огірок, лосось, японський майонез",262],
+["Торі рол","Копчена курка, огірок, спайсі",189],
+["Запечений з вугрем","Філадельфія, огірок, вугор, унагі",415],
+["Запечений з куркою","Копчена курка, перець, кім-чі, спайсі",272],
+["Запечений з лососем","Філадельфія, огірок, лосось, тобіко",350],
+["Темпура з лососем","",251],["Унагі темпура","",355],["Креветка темпура","",256],
+["Боніто рол","Вугор, ікра, стружка тунця",384],
+["Мізукі рол","Смажений лосось, помідор, стружка тунця",278],
+["Макі лосось","",182],["Макі авокадо","",152],["Макі вугор","",199],["Макі огірок","",82],
+["Макі тунець","",144],["Макі креветка","",188],["Макі копчена курка","",121],
+["Гункани з лососем","",247],["Гункани з вугрем","",284],["Гункани з тунцем","",172],["Гункани з креветкою","",202],
+["Зелений гай","Авокадо, лосось, огірок, крем-сир, тобіко · 330 г",359,0,P],
+["Rest house преміум","Лосось, креветки в паніровці, тунець, унагі · 440 г",459,0,P],
+["Аляска Делюкс","Сніжний краб, крем-сир, огірок, спайсі · 345 г",299,0,P],
+["Рол Чотири Сири","Чеддер, крем-сир, дор блю, груша, пармезан · 330 г",399,0,P],
+["Рол Перлина міні","4 шматочки · лосось, тунець, креветка, краб · 140 г",339,0,P],
+["Мозаїка з тунцем","4 шматочки · 180 г",169,0,P],
+["Мозаїка з лососем","4 шматочки · 180 г",219,0,P],
+["Мозаїка сніжний краб","4 шматочки · 180 г",144,0,P],
+["Запечений з гребінцем","Крем-сир, гребінець, яблуко, спайсі",289]
+]},
+{id:"sets",name:"Суші-сети",icon:"🍱",items:[
+["Сет Аляска","Аляска з лососем, з вугрем, сніговий краб · 800 г",599],
+["Королівський сет","Філадельфія, 3 дракони, Аляска · 1320 г",1370],
+["Фреш фіш сет","Філадельфія з вугрем і лососем, Біг лосось, Червоний дракон · 1080 г",1230],
+["Чіз-сет","Аляска, Чіз, Чіз з креветкою, Торі чіз · 1020 г",729],
+["Унагі сет","Філадельфія з вугрем, Золотий дракон, 2× Макі вугор",1160],
+["Сет Філадельфія","Делюкс, з вугрем, з тунцем, з креветкою",1210],
+["Імператорський сет","8 видів ролів",2290],
+["Сет на двох","Сакура, Торі чіз, Макі лосось, Макі краб",612],
+["Сет Дракони","Червоний, Зелений, Золотий дракон",890],
+["Футо сет","Ебі, Торі, Сакура, Макі огірок, Макі лосось",833],
+["МініMакі сет","6 видів макі",518],
+["Сет MIX","Філадельфія лосось, Ебі, Торі чіз, Аляска з вугрем",930]
+]},
+{id:"soups",name:"Супи",icon:"🍲",items:[
+["Грибний крем-суп","250 г",136],["Курячий бульйон з локшиною","300 г",109],
+["Томатний з морепродуктами","300 г",242],["Суп з фрикадельками","300 г",88],
+["Борщ український","З реберцями · 350 г",81],["Окрошка","300 г",118],
+["Солянка","400 г",139],["Томатний з телятиною","300 г",196],
+["Сирний крем-суп з лососем","270 г",221],["Рамен","",262],["Том Ям","",349],["Холодник","",149]
+]},
+{id:"burgers",name:"Бургери",icon:"🍔",items:[
+["Resthouse burger","Дві котлети (яловичина та свинина), чеддер, BBQ · 700 г",398],
+["Pork burger","Свинина, бекон, маринована цибуля · 520 г",324],
+["Beef burger","Яловичина, чеддер, солодкий чилі · 520 г",338],
+["Chicken burger","Куряча котлета, чеддер, синя цибуля · 520 г",298],
+["Rubenchik","Без булки · подвійна свино-яловича котлета · 400 г",208],
+["Бобі Гриль","Свино-яловича котлета, чеддер, фрі · 520 г",302]
+]},
+{id:"salads",name:"Салати",icon:"🥗",items:[
+["Грецький","230 г",132],["Цезар з куркою","250 г",211,0,P],["Цезар з креветками","250 г",272],
+["Кантрі","Бекон, адигейський сир, мариновані опеньки · 250 г",282],
+["Тюна-брі","Стейк тунця, брі, рукола · 260 г",269],
+["Авокадо-фреш","250 г",282],["Філадельфія-фреш","Лосось с/с, крем-сир, рукола · 280 г",278],
+["Овочевий сезонний","150 г",82],["Олів'є","Курка, буженина або лосось · 220 г",132],
+["Ді маре","Креветки, мідії · 285 г",320],["Бургер-салат","420 г",250,0,P]
+]},
+{id:"mains",name:"М'ясо та риба",icon:"🥩",items:[
+["Стейк лосося","Запечений у фользі · ~350 г",560],["Курча «Пармезан»","350 г",342],
+["Бефстроганов","З картопляним пюре · 300 г",224],["Ошийок зі свинини","~350 г",440],
+["Скумбрія-гриль","",388],["Філе сібаса запечене","",450],["Стейк тунця","",311],
+["Дорадо запечена","",512],["Курка по-строгановськи","",189],["Котлета по-київськи","",252],
+["Курячі котлетки","",99],["Стейк із яловичини","",440],["Куряча відбивна","",112],
+["Креветки у вершково-часниковому соусі","",382],
+["Стейк Чак Ай Ролл Преміум","550 г",1100],["Стейк Чак Ай Ролл Преміум Міні","250 г",720]
+]},
+{id:"pasta",name:"Паста та локшина",icon:"🍝",items:[
+["Спагеті «Карбонара»","320 г",222],["Фетучіне «Боскайола»","300 г",229],
+["Фунчоза з креветкою","290 г",352],["Удон «Пад-тай»","",256],
+["Соба з мідіями в манго-соусі","",266,0,P],["Фунчоза з куркою","",211,0,P],
+["Спагеті з морепродуктами","",352],["Тальятелле «Болоньєзе»","",342],
+["Удон з куркою","",225],["Дон Веган","",195],["Соба з телятиною","",225]
+]},
+{id:"pans",name:"Пательні та гарніри",icon:"🍳",items:[
+["Пательня з куркою та цибулею","",254,428,P],["Пательня з шинкою та грибами","",256,386],
+["Пательня з ковбасками та цибулею","",262,369],["Пательня зі свининою та шкварками","",292,503],
+["Картопля по-селянськи","",87],["Овочі-гриль","",199],["Картопля фрі","",102],
+["Пюре картопляне","",82],["Гречка","",52],["Кус-кус з овочами","",62],["Рис з овочами","",66],["Діпи картопляні","",88]
+]},
+{id:"snacks",name:"Закуски та до пива",icon:"🍻",items:[
+["Крила BBQ / Чилі","",386],["Ребра у медово-гірчичному соусі","",398],["Сет сиру","",488],
+["Сет фруктів","",228],["Грінки з часником","",78],["Сет до горілки","",478],
+["Деруни","",132],["Деруни з грибами","",172],["Цибулеві кільця","",174],
+["Курячі нагетси","",211],["Креветка Панко","",285],["Сирні палички","",289],
+["Таріль свіжої городини","",298],["Таріль солінь","",264],["Таріль «Козацька»","",498],
+["М'ясний сет","",398],["Сало з цибулею","",110],["Оселедець з цибулею","За 100 г",157],
+["Маслини","За 100 г",74],["Фісташки","За 100 г",180],
+["Пивна дошка 1","",398],["Пивна дошка 2","",395],["Пивна дошка 3","",399],
+["Натуральні джерки","50 г",98],["Копчений чеддер","За 100 г",220]
+]},
+{id:"bruschetta",name:"Брускети та млинці",icon:"🥖",items:[
+["З грибами та цибулею","",162],["З лососем та авокадо","",342],["З яловичим стейком","",244],
+["З курячим пате та чері","",211],["З оселедцем та картоплею","",212],["Креветка-брі","",266],
+["З шинкою та перцем гриль","",242],
+["Млинці з куркою та грибами","",242],["Млинці з шинкою та сиром","",272],["Млинці з бананом та шоколадом","",142]
+]},
+{id:"breakfast",name:"Сніданки",icon:"🍳",items:[
+["Сирники","",188],["Панкейки","",81],["Омлет класичний","",99],["Яєчня класична","",91],
+["Яйце «Бенедикт»","",211],["Яйце «Гемінгвей»","",243],["Омлет з броколі та салямі","",152],
+["Омлет з беконом та чері","",188],["Омлет з грибами та цибулею","",135],
+["Омлет з лососем, філою та чері","",234],["Яєчня по-берберськи","",221],
+["Яєчня з шинкою та кукурудзою","",131],["Яєчня з куркою та помідорами","",172]
+]},
+{id:"dumplings",name:"Вареники та пельмені",icon:"🥟",items:[
+["Вареники з капустою","",99],["Вареники з картоплею та грибами","",93],
+["Вареники з м'ясом","",175],["Вареники з творогом","",142],
+["Пельмені з м'ясом","Яловичина та свинина, зі сметаною",149,0,P],["Пельмені-фрі","",172]
+]},
+{id:"desserts",name:"Десерти",icon:"🍰",items:[
+["Шоколадний фондан","",178],["Чизкейк «Нью-Йорк»","",122],["Чизкейк європейський","",110],
+["Пана-кота","",92],["Медовик","",97],["Наполеон","",110],["Вишневий наполеон","",109],
+["Горіховий десерт","",119],["Червоний оксамит","",110],["Меренговий рулет","",117],
+["Торт Снікерс","",125],["Морозиво","За кульку",35]
+]},
+{id:"lunch",name:"Ланч",icon:"🍽️",items:[
+["Ланч з 2 страв","",264],["Ланч з 3 страв","",294]
+]},
+{id:"coffee",name:"Кава та чай",icon:"☕",items:[
+["Еспресо","",40],["Ристрето","",55],["Макіато","",52],["Американо з молоком","",58],
+["Капучино","",73],["Лате","",77],["Флет-вайт","",88],["Раф","",112],["Какао","",72],
+["Фрапе","",77],["Ice Latte","",72],
+["Чай зелений","",76,0,P],["Чай чорний","",76,0,P],["Гречаний чай","",92],
+["Апельсин – Малина","Авторський чай",96,0,P],["Обліпиха – Імбир","Авторський чай",96,0,P],
+["Малина – М'ята","Авторський чай",96,0,P],["Обліпиха – Манго","500 мл",96],["Обліпиха – Маракуйя","500 мл",96]
+]},
+{id:"drinks",name:"Холодні напої",icon:"🥤",items:[
+["Лимонад 1 л","",126],["Лимонад S","",72],["Лимонад ківі 1 л","",156],["Лимонад ківі 400 мл","",62],
+["Смурфик","Спрайт, Blue Curacao, лимон",56,0,P],["Sandora","",177],
+["Моршинська газ.","",36],["Моршинська негаз.","",36],["Боржомі 500 мл","",101],
+["Pepsi 0,5","",60],["Pepsi 0,33 скло","",75],["Pepsi 0,33 без цукру","",45],["7Up 0,33","",60]
+]},
+{id:"beer",name:"Пиво",icon:"🍺",items:[
+["Kronenbourg 1664 Blanc","",69],["Львівське 1715","",49],["Dunkel темне","",56],
+["Львівське 1715 безалкогольне","",89],["Guinness Draught","",180],
+["Пивна вежа Blanc 3 л","",465],["Пивна вежа Львівське 3 л","",320],["Пивна вежа Dunkel 3 л","",395]
+]},
+{id:"cocktails",name:"Коктейлі",icon:"🍹",items:[
+["Мохіто безалкогольний","",86],["Milk Shake","",88],["Energy Boom","Енергетик, Blue Curacao, спрайт, ананас",72],
+["Глінтвейн білий","Біле напівсолодке вино, спеції, апельсин",135],["Глінтвейн червоний","Червоне вино, спеції, апельсин",135],
+["Long Island","Ром, джин, текіла, Triple Sec, Pepsi",198],["Aperol Spritz","Aperol, брют, Schweppes",232],
+["Jungle Juice","Джин, банановий лікер, апельсин, ананас",155],["New York Sour","Jim Beam, лимон, гренадин",177],
+["Evergreen Feez","Джин, лимон, лікер pisang, sprite",169],["Strawberry Collins","Джин, полуничне пюре, лайм, м'ята",172],
+["San Francisco","Джин, апельсин, ананас, гренадин",165],["Negroni","Джин, Martini Rosso, Campari",175],
+["Pink Pantera","Горілка, полуничний сироп, вершки",166],["Mai Tai","Білий і темний ром, амаретто",175],
+["Mohito","Класичний, ром Bacardi",158],["Tom Collins","Джин, sprite, лайм, м'ята",165],
+["Green Queen","Текіла, ананас, sprite, pisang",165],["Mexican Pie","Апельсиново-вершковий на білому ромі",169],
+["Жар-птиця","Martini Fierro, спрайт",153],["Мерілін Монро","Jim Beam Apple, брют, яблучний сік",168],
+["Марракаші","Ром Spiced, грейпфрут, персик, кориця",165],["Gin Sour","Джин, лимон, огірок, гренадин",165],
+["Фруктовий коктейль L","",429],["Фруктовий коктейль XL","",499]
+]},
+{id:"shots",name:"Шоти",icon:"🥃",items:[
+["Green Mexican","",139],["Hiroshima","",139],["Medusa","",139],["Brain Tumor","",139],["Basketball","",139],
+["Cloud","",139],["Скло","",139],["Pisang Shot","",139],["Nipple","",139],["Tequila Sunrise","",139],
+["Boyarsky","",139],["Green World","",139],["Gelion","",139]
+]},
+{id:"bar",name:"Алкоголь (за 100 г)",icon:"🥂",items:[
+["Absolut Original","Горілка",140],["Finlandia Original","Горілка",140],["Nemiroff","Горілка",70],
+["Koskenkorva Original","Горілка",130],["Becherovka","",166],["Jagermeister","",180],["Baileys","",158],
+["Metaxa 5*","Коньяк",200],["Старий Кахеті 3*","Коньяк",120],["Старий Кахеті 5*","Коньяк",140],
+["Jameson","Віскі",280],["Jack Daniels N.7","Віскі",280],["Jim Beam Original","Віскі",280],
+["Johnnie Walker Red Label","Віскі",240],["Chivas Regal 12","Віскі",400],["William Lawson's","Віскі",142],
+["Bacardi Carta Blanca","Ром",180],["Bacardi Carta Negra","Ром",180],["Bacardi Spiced","Ром",180],
+["Bombay","Джин",230],["Tanqueray","Джин",232],["Hendrick's","Джин",440],["Finsbury","Джин",130],
+["Olmeca Silver","Текіла",230],["Aperol","Аперитив",154],["Campari","Аперитив",148],["Martini Bianco","Вермут",64],
+["Marlborough Sun Sauvignon Blanc","Нова Зеландія",145],["Marlborough Sun Rosé","Нова Зеландія",152],
+["Kartuli Vazi Алазанська Долина","Грузія, біле",52],["Bagrati Кіндзмараулі","Грузія",104],
+["Martini Asti","Ігристе, пляшка",910],["Fragolino Bianco","Пляшка",420],["Martini Brut","Пляшка",680]
+]}
+];
+
+const $=s=>document.querySelector(s);
+const fmt=n=>n.toLocaleString("uk-UA")+" грн";
+let size="M",cat="all",popOnly=false,query="";
+const cart=new Map();
+
+/* chips */
+const chips=$("#chips");
+chips.innerHTML=[{id:"all",name:"Усе",icon:""},...MENU].map(c=>
+  `<button class="chip${c.id==="all"?" on":""}" data-c="${c.id}">${c.icon} ${c.name}</button>`).join("");
+chips.onclick=e=>{const b=e.target.closest(".chip");if(!b)return;cat=b.dataset.c;
+  [...chips.children].forEach(x=>x.classList.toggle("on",x===b));render();
+  if(cat!=="all")window.scrollTo({top:$("#menu").offsetTop-120,behavior:"smooth"});};
+
+document.querySelectorAll(".seg button").forEach(b=>b.onclick=()=>{
+  size=b.dataset.s;document.querySelectorAll(".seg button").forEach(x=>x.classList.toggle("on",x===b));render();});
+$("#q").oninput=e=>{query=e.target.value.trim().toLowerCase();render();};
+$("#popOnly").onchange=e=>{popOnly=e.target.checked;render();};
+
+function priceOf(c,it){return (c.id==="pizza"&&size==="XL"&&it[3])?it[3]:it[2];}
+function nameOf(c,it){return c.id==="pizza"&&it[3]?`${it[0]} ${size==="XL"?"XL":""}`.trim():it[0];}
+
+function render(){
+  let html="",total=0;
+  for(const c of MENU){
+    if(cat!=="all"&&cat!==c.id)continue;
+    const items=c.items.filter(it=>
+      (!popOnly||it[4])&&(!query||(it[0]+" "+it[1]).toLowerCase().includes(query)));
+    if(!items.length)continue;
+    total+=items.length;
+    html+=`<section class="cat" id="${c.id}"><h2>${c.icon} ${c.name}<small>${items.length}</small></h2><div class="grid">`+
+      items.map(it=>{
+        const key=c.id+"|"+nameOf(c,it);
+        const hasXL=c.id==="pizza"&&it[3];
+        return `<article class="item"><h3><span>${it[0]}</span>${it[4]?'<span class="badge">ХІТ</span>':''}</h3>
+          ${it[1]?`<p class="desc">${it[1]}</p>`:'<p class="desc"></p>'}
+          <div class="meta"><span class="price">${fmt(priceOf(c,it))}<small>${hasXL?(size==="XL"?"XL":"стандарт"):""}</small></span>
+          <button class="add" data-k="${encodeURIComponent(key)}" data-n="${encodeURIComponent(nameOf(c,it))}" data-p="${priceOf(c,it)}">+ Додати</button></div></article>`;
+      }).join("")+`</div></section>`;
+  }
+  $("#menu").innerHTML=total?html:`<div class="empty">Нічого не знайдено 🙈<br>Спробуйте інший запит</div>`;
+}
+
+$("#menu").onclick=e=>{const b=e.target.closest(".add");if(!b)return;
+  const k=decodeURIComponent(b.dataset.k),n=decodeURIComponent(b.dataset.n),p=+b.dataset.p;
+  const cur=cart.get(k)||{n,p,q:0};cur.q++;cart.set(k,cur);updateCart();toast("Додано: "+n);};
+
+function updateCart(){
+  let c=0,s=0;cart.forEach(v=>{c+=v.q;s+=v.q*v.p;});
+  $("#cnt").textContent=c;$("#sum").textContent=fmt(s);
+  $("#lines").innerHTML=cart.size?[...cart].map(([k,v])=>
+   `<div class="line"><span class="n">${v.n}</span><span class="qty"><button data-d="-1" data-k="${encodeURIComponent(k)}">−</button>${v.q}<button data-d="1" data-k="${encodeURIComponent(k)}">+</button></span><b>${fmt(v.q*v.p)}</b></div>`).join("")
+   :'<p class="empty">Кошик порожній</p>';
+}
+$("#lines").onclick=e=>{const b=e.target.closest("button");if(!b)return;
+  const k=decodeURIComponent(b.dataset.k),v=cart.get(k);v.q+=+b.dataset.d;if(v.q<=0)cart.delete(k);updateCart();};
+
+const dr=$("#drawer");
+$("#openCart").onclick=()=>dr.classList.add("open");
+$("#closeCart").onclick=$("#shade").onclick=()=>dr.classList.remove("open");
+$("#copy").onclick=async()=>{
+  if(!cart.size)return toast("Кошик порожній");
+  let t="Замовлення RESTHOUSE CAFE:\n",s=0;
+  cart.forEach(v=>{t+=`• ${v.n} × ${v.q} — ${v.q*v.p} грн\n`;s+=v.q*v.p;});t+=`Разом: ${s} грн`;
+  try{await navigator.clipboard.writeText(t);toast("Скопійовано");}catch{toast("Не вдалося скопіювати");}
+};
+function toast(m){const t=$("#toast");t.textContent=m;t.classList.add("show");clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove("show"),1600);}
+
+/* open/closed (Київ) */
+function status(){
+  const h=+new Intl.DateTimeFormat("en-GB",{hour:"numeric",hour12:false,timeZone:"Europe/Kyiv"}).format(new Date());
+  const open=h>=11&&h<23;
+  $("#dot").classList.toggle("open",open);
+  $("#stext").textContent=open?"Зараз відчинено · до 23:00":"Зачинено · відкриємось об 11:00";
+}
+status();setInterval(status,60000);
+render();updateCart();
+</script>
+</body>
+</html>
